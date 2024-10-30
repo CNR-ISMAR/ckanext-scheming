@@ -1,0 +1,153 @@
+scheming_version: 2
+dataset_type: ismar-data
+about: A reimplementation of the default CKAN dataset schema
+about_url: http://github.com/ckan/ckanext-scheming
+
+
+dataset_fields:
+
+- start_form_page:
+    title: Basic Info
+    description: requjired fields by CKAN
+
+  field_name: id
+  label: Identifier 
+  form_snippet: text.html
+  
+- field_name: owner_org
+  label: Organization
+  preset: dataset_organization
+  
+- field_name: name
+  label: Locator  (URL) 
+  preset: dataset_slug
+  form_placeholder: eg. my-dataset
+
+- field_name: title
+  label: Title
+  preset: title
+  form_placeholder: eg. A descriptive title for this dataset (ISMAR domain)
+
+- field_name: notes
+  label: Description
+  form_snippet: markdown.html
+  form_placeholder: "eg. An account of the content of the resource. Description may include but is  not limited to an abstract, table of contents, reference to a graphical representation of content or a free-text account of the content."
+
+- field_name: subject_keywords
+  label: Subject and  Keywords   
+  preset: tag_string_autocomplete
+  form_placeholder: The topic of the content of the resource. Typically, a Subject will be expressed as keywords or key phrases or classification codes that describe the topic of the resource. 
+
+- field_name: license_id
+  label: License
+  form_snippet: license.html
+  help_text: License definitions and additional information can be found at http://opendefinition.org/
+
+
+- start_form_page:
+    title: Dataset Info
+    description: Additional fields Dublin Core Metadata or ISO 19115
+ 
+  field_name: dataset_type
+  label: Type
+  required: True
+  help_text: For a list of tipe see for example <a href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#section-7">DCMIType vocabulary</a>
+  
+- field_name: dataset_format
+  label: Format
+  form_placeholder: Example pdf, shapefile, netCDF, rock, biological specimen.
+
+- field_name: dates
+  label: Dates
+  repeating_label: Date
+  repeating_subfields:
+  
+  - field name: date
+    preset: date  
+    
+  - field_name: datetype
+    label: Date type 
+    help_text: type of date (default creation)
+    help_inline: true
+    preset: select
+    choices:
+    - value: creation
+      label: Creation
+    - value: publication
+      label: Publication
+    - value: revision
+      label: Revision
+    - value: distribution
+      label: Distribution
+    - value: lastRevision
+      label: Last Revision
+    - value: lastUpdate
+      label: Last Update    
+     
+     
+- field_name: language 
+
+- field_name: source   
+
+- field_name: relation   
+
+- field_name: coverage   
+    
+- start_form_page:
+    title: Rights and roles Info
+    description: Agents and roles related to dataset
+    
+  field_name: creator
+  label: Creator
+  form_placeholder: Joe Bloggs
+  display_property: dc:creator
+
+
+- field_name: publisher
+
+
+- field_name: contributor   
+
+- field_name: point_of_contact   
+
+- field_name: responsible_party
+  label: Responsible party  
+
+- field_name: classification
+  label: Classification  
+
+- field_name: legal_contraints
+  label: Legal constraints  
+  
+- field_name: rights  
+  label:  Rights
+  
+- field_name: license   
+  label:  License  
+
+- field_name: other_constraints
+  label: Other constraints  
+
+- field_name: citation
+  label: Citation  
+  preset: multiple_text
+
+
+resource_fields:
+
+- field_name: url
+  label: URL
+  preset: resource_url_upload
+
+- field_name: name
+  label: Name
+  form_placeholder: eg. January 2011 Gold Prices
+
+- field_name: description
+  label: Description
+  form_snippet: markdown.html
+  form_placeholder: Some useful notes about the data
+
+- field_name: format
+  label: Format
+  preset: resource_format_autocomplete
